@@ -19,7 +19,7 @@ DEFAULT_MODEL = os.getenv("VLLM_TEST_MODEL", "gemma-3-4b-it")
 DEFAULT_TIMEOUT = float(os.getenv("VLLM_TEST_TIMEOUT", "60"))
 DEFAULT_MAX_TOKENS = int(os.getenv("VLLM_TEST_MAX_TOKENS", "48"))
 DEFAULT_TEMPERATURE = float(os.getenv("VLLM_TEST_TEMPERATURE", "0.0"))
-SAMPLE_IMAGE = Path(__file__).resolve().parents[1] / "sample_image.webp"
+SAMPLE_IMAGE = Path(__file__).resolve().parent / "sample_image.webp"
 
 
 @dataclass

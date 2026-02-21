@@ -111,14 +111,16 @@ def build_structured_table(json_files: list[str], output_file: str = None):
 if __name__ == '__main__':
     import glob
 
+    artifacts_dir = Path(__file__).resolve().parent.parent / 'artifacts' / 'multimodel'
+
     json_files = [
-        '/workspace/vllm/attn_instrumentation/artifacts/multimodel/results_gemma-3-4b-it.json',
-        '/workspace/vllm/attn_instrumentation/artifacts/multimodel/results_qwen2.5-7b.json',
-        '/workspace/vllm/attn_instrumentation/artifacts/multimodel/results_qwen2.5-vl-7b.json',
+        str(artifacts_dir / 'results_gemma-3-4b-it.json'),
+        str(artifacts_dir / 'results_qwen2.5-7b.json'),
+        str(artifacts_dir / 'results_qwen2.5-vl-7b.json'),
     ]
 
     # Check for Llama results
-    if Path('/workspace/vllm/attn_instrumentation/artifacts/multimodel/results_llama.json').exists():
-        json_files.append('/workspace/vllm/attn_instrumentation/artifacts/multimodel/results_llama.json')
+    if (artifacts_dir / 'results_llama.json').exists():
+        json_files.append(str(artifacts_dir / 'results_llama.json'))
 
-    build_structured_table(json_files, '/workspace/vllm/attn_instrumentation/artifacts/multimodel/COMPARISON_TABLE.md')
+    build_structured_table(json_files, str(artifacts_dir / 'COMPARISON_TABLE.md'))
